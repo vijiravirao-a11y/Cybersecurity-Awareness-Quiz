@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Awareness Quiz</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+}
+h1 {
+    color: #123c69;
+    text-align: center;
+}
+.question {
+    margin-top: 22px;
+    font-weight: bold;
+}
+label {
+    display: block;
+    padding: 8px;
+}
+button {
+    background: #123c69;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 18px;
+    font-size: 16px;
+}
+#result {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Cybersecurity Awareness Quiz</h1>
+<p>Test your knowledge of online safety!</p>
+
+<form id="quiz">
+
+<div class="question">1. Which is a strong password?</div>
+<label><input type="radio" name="q1" value="a"> 12345678</label>
+<label><input type="radio" name="q1" value="b"> password123</label>
+<label><input type="radio" name="q1" value="c"> R7@mQ2#pL9</label>
+
+<div class="question">2. What is phishing?</div>
+<label><input type="radio" name="q2" value="a"> A type of online fraud</label>
+<label><input type="radio" name="q2" value="b"> A computer game</label>
+<label><input type="radio" name="q2" value="c"> A software update</label>
+
+<div class="question">3. What should you do with a suspicious link?</div>
+<label><input type="radio" name="q3" value="a"> Click immediately</label>
+<label><input type="radio" name="q3" value="b"> Share it with friends</label>
+<label><input type="radio" name="q3" value="c"> Avoid clicking and verify it</label>
+
+<div class="question">4. What does 2FA provide?</div>
+<label><input type="radio" name="q4" value="a"> An extra layer of security</label>
+<label><input type="radio" name="q4" value="b"> Free internet</label>
+<label><input type="radio" name="q4" value="c"> Faster downloads</label>
+
+<div class="question">5. What should you do on public Wi-Fi?</div>
+<label><input type="radio" name="q5" value="a"> Share your password</label>
+<label><input type="radio" name="q5" value="b"> Avoid sensitive activities on untrusted networks</label>
+<label><input type="radio" name="q5" value="c"> Disable all security</label>
+
+<button type="button" onclick="checkAnswers()">Submit Answers</button>
+</form>
+
+<div id="result" aria-live="polite"></div>
+</div>
+
+<script>
+function checkAnswers() {
+    const answers = {
+        q1: "c",
+        q2: "a",
+        q3: "c",
+        q4: "a",
+        q5: "b"
+    };
+
+    let score = 0;
+    let total = Object.keys(answers).length;
+
+    for (let question in answers) {
+        const selected = document.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+
+        if (selected && selected.value === answers[question]) {
+            score++;
+        }
+    }
+
+    document.getElementById("result").textContent =
+        "Your Score: " + score + "/" + total +
+        (score >= 4 ? " - Great job!" :
+        score >= 3 ? " - Good effort! Keep learning." :
+        " - Keep learning about cybersecurity!");
+}
+</script>
+</body>
+  </html>
+  
